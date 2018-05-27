@@ -15,7 +15,7 @@ SimpleList<T>::SimpleList() {
 template <class T>
 SimpleList<T>::~SimpleList() {
         for(int i = 0; i < numElements; i++) {
-                destroy(elements[i]);
+                destroy(*elements[i]);
         }
  // delete [] elements;
 }
