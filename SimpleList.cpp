@@ -1,7 +1,6 @@
 // SimpleList.cpp
   
-#include "SimpleList.h"
-#include <list>
+//#include "SimpleList.h"
 
 
 // constructor that sets numElements to 0
