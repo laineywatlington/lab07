@@ -29,12 +29,12 @@ SimpleList<T>::~SimpleList() {
 
 
 template<class T>
-void destroy(T element) {
+void SimpleList<T>::destroy(T element) {
         // do nothing
 }
 
 template<class T>
-void destroy(T* element) {
+void SimpleList<T>::destroy(T* element) {
         delete element;
 }
 
