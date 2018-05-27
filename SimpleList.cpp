@@ -1,7 +1,9 @@
 // SimpleList.cpp
   
-//#include "SimpleList.h"
-
+#include "SimpleList.h"
+#include <iostream>
+#include <cstdlib>
+#include <type_traits>
 
 // constructor that sets numElements to 0
 template<class T>
@@ -13,11 +15,18 @@ SimpleList<T>::SimpleList() {
 // destructor must delete array & elements
 template <class T>
 SimpleList<T>::~SimpleList() {
-   for(int i = 0; i < numElements; i++) {
+        for(int i = 0; i < numElements; i++) {
+                // will call destroy(T* element)
+                if(std::is_pointer<T>::value) {
                 destroy(elements[i]);
+                }
+                else {
+                        // will call destroy(T element)
+                        destroy(elements[i]);
+                }
         }
-        destroy(elements);
 }
+
 
 template<class T>
 void destroy(T element) {
