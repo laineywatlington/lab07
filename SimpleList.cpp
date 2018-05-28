@@ -101,6 +101,7 @@ void SimpleList<T>::remove(int index) throw(InvalidIndexException, EmptyListExce
                 throw EmptyListException();
         if(index < 0 || index >= numElements)
                 throw InvalidIndexException();
+        destroy(elements[index]);
         for(int i = index; i < numElements; i++) {
                 elements[i] = elements[i+1];
         }
