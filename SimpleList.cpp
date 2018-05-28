@@ -12,23 +12,6 @@ SimpleList<T>::SimpleList() {
         elements = new T[CAPACITY];
 }
 
-// destructor must delete array & elements
-template <class T>
-SimpleList<T>::~SimpleList() {
-       /*for(int i = 0; i < numElements; i++) {
-                // will call destroy(T* element)
-                if(std::is_pointer<T>::value) {
-                destroy(elements[i]);
-                }
-                else {
-                        // will call destroy(T element)
-                        destroy(elements[i]);
-                } */
-         // delete the whole array
-        delete[] elements;
-}
-
-
 template<class T>
 void destroy(T element) {
         // do nothing
@@ -38,6 +21,22 @@ void destroy(T element) {
 template<class T>
 void destroy(T* element) {
         delete element;
+}
+
+// destructor must delete array & elements
+template <class T>
+SimpleList<T>::~SimpleList() {
+       for(int i = 0; i < numElements; i++) {
+                // will call destroy(T* element)
+                if(std::is_pointer<T>::value) {
+                destroy(elements[i]);
+                }
+                else {
+                        // will call destroy(T element)
+                        destroy(elements[i]);
+                } 
+         // delete the whole array
+        delete[] elements;
 }
 
 // returns the element at index location. throws a InvalidIndexException
