@@ -15,7 +15,7 @@ SimpleList<T>::SimpleList() {
 // destructor must delete array & elements
 template <class T>
 SimpleList<T>::~SimpleList() {
-       /* for(int i = 0; i < numElements; i++) {
+       for(int i = 0; i < numElements; i++) {
                 // will call destroy(T* element)
                 if(std::is_pointer<T>::value) {
                 destroy(elements[i]);
@@ -24,23 +24,19 @@ SimpleList<T>::~SimpleList() {
                         // will call destroy(T element)
                         destroy(elements[i]);
                 }
-        }*/
-   if(std::is_pointer<T>::value) {
-       destroy(elements);
-        }
-        else {
-                destroy(elements);
-        }
+         // delete the whole array
+        delete[] elements;
 }
 
 
 template<class T>
-void SimpleList<T>::destroy(T element) {
+void destroy(T element) {
         // do nothing
 }
 
+// delete the pointer type
 template<class T>
-void SimpleList<T>::destroy(T* element) {
+void destroy(T* element) {
         delete element;
 }
 
